@@ -37,6 +37,17 @@ activities <- read.table("./UCI HAR Dataset/activity_labels.txt")
 activity_labels <- as.character(activities[,2])
 key_data$Activity <- activity_labels[key_data$Activity]
 
+### 4. Appropriate labels for variables
+# Changes abbreviated notation
+key_labels <- names(key_data)
+key_labels <- gsub("()","",key_labels)
+key_labels <- gsub("ACC","Accelerometer",key_labels)
+key_labels <- gsub("Gyro","Gyrometer",key_labels)
+key_labels <- gsub("std","StandardDeviation",key_labels)
+key_labels <- gsub("mean","Mean",key_labels)
+key_labels <- gsub("Mag","Magnitude",key_labels)
+names(key_data) <- key_labels
+
 ### 5.Creates a second, independent tidy data set with the average of each variable for 
 ### each activity and each subject
 tidy_data <- aggregate(key_data[,3:68], by = list(Activity = key_data$Activity, Subject = key_data$Subject),FUN = mean)
