@@ -41,7 +41,7 @@ key_data$Activity <- activity_labels[key_data$Activity]
 # Changes abbreviated notation
 key_labels <- names(key_data)
 key_labels <- gsub("()","",key_labels)
-key_labels <- gsub("ACC","Accelerometer",key_labels)
+key_labels <- gsub("Acc","Accelerometer",key_labels)
 key_labels <- gsub("Gyro","Gyrometer",key_labels)
 key_labels <- gsub("std","StandardDeviation",key_labels)
 key_labels <- gsub("mean","Mean",key_labels)
